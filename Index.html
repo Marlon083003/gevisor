@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17452f">
+  <title>GeoVisor | Espacio p&uacute;blico</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="title-block">
+        <p class="eyebrow">LAS INDEPENDENCIAS <span> / </span> SAN JAVIER, MEDELL&Iacute;N</p>
+        <h1>Espacio p&uacute;blico</h1>
+        <p class="subtitle">Explora los cambios del territorio en el tiempo</p>
+      </div>
+    </header>
+
+    <div class="viewer-layout">
+    <section class="control-panel" aria-label="Controles del mapa">
+      <div class="year-control">
+        <div class="section-heading"><span class="section-icon">01</span><div><h2>Imagen satelital</h2><p>Selecciona el a&ntilde;o para comparar</p></div></div>
+        <input id="multitemporal-range" type="range" min="0" max="2" step="1" value="0" aria-label="Selector de a&ntilde;o">
+        <div class="year-legend"><span>2006</span><span>2014</span><span>2024</span></div>
+        <button id="toggle-tiff" class="tiff-toggle" type="button" aria-label="Ocultar im&aacute;genes TIFF" aria-pressed="true" title="Ocultar im&aacute;genes TIFF">
+          <svg class="tiff-eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Im&aacute;genes TIFF</span>
+        </button>
+      </div>
+      <div class="layer-control">
+        <div class="section-heading"><span class="section-icon orange">02</span><div><h2>Capas de informaci&oacute;n</h2><p>Activa o desactiva datos del mapa</p></div></div>
+        <div class="shape-toolbar" id="shape-toolbar" aria-label="Capas vectoriales"></div>
+      </div>
+      <div class="basemap-control">
+        <span class="satellite-badge"><span></span> MAPAS BASE</span>
+        <p>Selecciona el fondo del mapa</p>
+        <button id="toggle-satellite" class="tiff-toggle satellite-toggle" type="button" aria-label="Ocultar imagen satelital" aria-pressed="true" title="Ocultar imagen satelital">
+          <svg class="tiff-eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.1 3.8M6.2 6.2C3.5 8 2 12 2 12s3.6 7 10 7c1.2 0 2.3-.3 3.3-.7"/></svg>
+          <span>Imagen satelital</span>
+        </button>
+        <button id="toggle-streets" class="tiff-toggle satellite-toggle is-off" type="button" aria-label="Mostrar mapa de calles" aria-pressed="false" title="Mostrar mapa de calles">
+          <svg class="tiff-eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21 8 3m8 18 5-18M2 16h20M4 8h16M2 12h20"/></svg>
+          <span>Mapa de calles (Esri)</span>
+        </button>
+        <p class="basemap-attribution">Sat&eacute;lite: Stadia Maps &middot; Calles: Esri</p>
+      </div>
+    </section>
+
+    <section class="map-shell" aria-label="Mapa de espacio p&uacute;blico">
+      <div id="map"></div>
+      <div class="map-caption"><span class="status-dot"></span><strong>Las Independencias</strong><span class="caption-separator">&middot;</span><span>San Javier, Medell&iacute;n</span><span class="caption-divider"></span><span id="raster-status" role="status" aria-live="polite">Cargando im&aacute;genes TIFF...</span></div>
+    </section>
+    </div>
+    <footer><strong>GEOVISOR ACAD&Eacute;MICO</strong><span class="footer-dot">&middot;</span> Datos geogr&aacute;ficos organizados desde DATA</footer>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/shpjs@6.2.0/dist/shp.js"></script>
+  <script src="https://unpkg.com/georaster@1.6.0/dist/georaster.browser.bundle.min.js"></script>
+  <script src="https://unpkg.com/proj4@2.19.7/dist/proj4.js"></script>
+  <script src="https://unpkg.com/georaster-layer-for-leaflet@3.10.0/dist/georaster-layer-for-leaflet.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
